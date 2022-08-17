@@ -1,0 +1,14 @@
+{
+  "name": "csv-to-parquet",
+  "version": "1.0.0",
+  "description": "csv-to-parquet",
+  "main": "./src/converter.js",
+  "scripts": {
+    "start": "node converter.js"
+  },
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "fs": "^0.0.1-security",
+    "parquetjs": "^0.11.2"
+  }
+}
