@@ -2,7 +2,7 @@
   "name": "csv-to-parquet",
   "version": "1.0.0",
   "description": "csv-to-parquet",
-  "main": "./src/converter.js",
+  "main": "converter.js",
   "scripts": {
     "start": "node converter.js"
   },

@@ -6,9 +6,7 @@ const ownersSchema = require('./schemas/owners.js')
 const convertCsvToParquet = async () => {
     try {
         await linkSchema()
-        await accountSchema()
-        await ownersSchema()
-        await transactionShema()
+
     } catch (error) {
         console.error(error)
     }
