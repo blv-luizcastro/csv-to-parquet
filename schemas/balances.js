@@ -3,23 +3,19 @@ const csv = require('csv-parser')
 const fs = require('fs')
 
 const schema = new parquet.ParquetSchema({
-    created_at: { type: 'UTF8', optional: true  },
-    link_id: { type: 'UTF8', optional: true },
-    access_mode: { type: 'UTF8', optional: true },
-    status: { type: 'UTF8' },
-    created_by: { type: 'UTF8', optional: true },
-    external_id: { type: 'UTF8', optional: true },
-    client_refresh: { type: 'UTF8', optional: true },
-    institution_name: { type: 'UTF8', optional: true },
-    institution_status: { type: 'UTF8', optional: true },
+    balance_id: { type: 'UTF8', optional: true },
+    account_id: { type: 'UTF8', optional: true },
+    value_date: { type: 'UTF8', optional: true },
+    balance: { type: 'UTF8', optional: true },
+    collected_at: { type: 'UTF8', optional: true }
 })
 
 module.exports = linkSchema = async () => {
     let writer = await parquet.ParquetWriter.openFile(schema, './files/parquet/balances.parquet')
     let data = []
 
-    fs.createReadStream('./files/csv/links.csv')
-    .pipe(csv())
+    fs.createReadStream('./files/csv/balances.csv')
+        .pipe(csv())
         .on('data', function (row) {
             data.push(row)
         })
@@ -27,13 +23,11 @@ module.exports = linkSchema = async () => {
 
             for (const row of data) {
                 await writer.appendRow({
-                    created_at: row.created_at,
-                    created_at: row.created_at,
-                    link_id: row.link_id,
-                    institution_name: row.institution_name,
-                    access_mode: row.access_mode,
-                    status: row.status,
-                    external_id: row.external_id
+                    balance_id: row.created_at,
+                    account_id: row.created_at,
+                    value_date: row.link_id,
+                    balance: row.institution_name,
+                    collected_at: row.access_mode
                 })
             }
             await writer.close()
